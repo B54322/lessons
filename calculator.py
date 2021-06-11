@@ -19,11 +19,22 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
 
         # Соединим сигналы со слотами
-        # self.ui.pushButton.clicked.connect(self.pushed_button)
+        self.ui.b1.clicked.connect(self.pushed_button)
+        self.ui.b2.clicked.connect(self.pushed_button)
+        self.ui.b3.clicked.connect(self.pushed_button)
+        self.ui.b4.clicked.connect(self.pushed_button)
+        self.ui.b5.clicked.connect(self.pushed_button)
+        self.ui.b6.clicked.connect(self.pushed_button)
+        self.ui.b7.clicked.connect(self.pushed_button)
+        self.ui.b8.clicked.connect(self.pushed_button)
+
+
+
 
     # функция при нажатии на кнопку
     def pushed_button(self):
-        print('ok')
+        self.button = self.sender()
+        self.ui.screen.setText(self.button.text())
 
 
 if __name__ == "__main__":
