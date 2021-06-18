@@ -27,15 +27,43 @@ class MainWindow(QMainWindow):
         self.ui.b6.clicked.connect(self.pushed_button)
         self.ui.b7.clicked.connect(self.pushed_button)
         self.ui.b8.clicked.connect(self.pushed_button)
+        self.ui.b9.clicked.connect(self.pushed_button)
+        self.ui.b0.clicked.connect(self.pushed_button)
 
+        self.ui.plus.clicked.connect(self.pushed_button)
+        self.ui.minus.clicked.connect(self.pushed_button)
+        self.ui.multiplication.clicked.connect(self.pushed_button)
+        self.ui.division.clicked.connect(self.pushed_button)
+        self.ui.equal.clicked.connect(self.equal)
 
-
+        self.ui.clear.clicked.connect(self.clear)
+        self.ui.backspace.clicked.connect(self.backspace)
+        self.ui.sqrt.clicked.connect(self.sqrt)
+        # значение экрана
+        self.screen = ''
 
     # функция при нажатии на кнопку
     def pushed_button(self):
+        
         self.button = self.sender()
-        self.ui.screen.setText(self.button.text())
+        self.screen += self.button.text()
+        self.ui.screen.setText(self.screen)
 
+    def equal(self):
+        self.screen = str(eval(self.screen))
+        self.ui.screen.setText(self.screen)
+
+    def clear(self):
+        self.screen = ''
+        self.ui.screen.setText('0')
+
+    def backspace(self):
+        self.screen = self.screen[:-1]
+        self.ui.screen.setText(self.screen)
+
+    def sqrt(self):
+        self.screen = str(int(self.screen)**0.5)
+        self.ui.screen.setText(self.screen)
 
 if __name__ == "__main__":
     # Создадим Qt Application
