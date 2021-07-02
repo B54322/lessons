@@ -39,23 +39,37 @@ class MainWindow(QMainWindow):
         self.ui.clear.clicked.connect(self.clear)
         self.ui.backspace.clicked.connect(self.backspace)
         self.ui.sqrt.clicked.connect(self.sqrt)
+        self.ui.plus_minus.clicked.connect(self.minus_plus)
+        self.ui.point.clicked.connect(self.pushed_button)
         # значение экрана
         self.screen = ''
+        self.minus = False
 
     # функция при нажатии на кнопку
     def pushed_button(self):
-        
         self.button = self.sender()
         self.screen += self.button.text()
         self.ui.screen.setText(self.screen)
 
     def equal(self):
         self.screen = str(eval(self.screen))
+        print(self.screen)
+        position = self.screen.find('.')
+        if position != -1:
+            if len(self.screen[position+1:])>3:
+                rounded = self.screen[position+1:position+4]
+                self.screen = f'{self.screen[:position+1]}{rounded}'
+                print(self.screen)
+                self.ui.screen.setText(self.screen)
+
+        else:
+            self.ui.screen.setText(self.screen)
         self.ui.screen.setText(self.screen)
 
     def clear(self):
         self.screen = ''
         self.ui.screen.setText('0')
+        self.minus = False
 
     def backspace(self):
         self.screen = self.screen[:-1]
@@ -63,6 +77,16 @@ class MainWindow(QMainWindow):
 
     def sqrt(self):
         self.screen = str(int(self.screen)**0.5)
+        self.ui.screen.setText(self.screen)
+    
+    def minus_plus(self):
+        if not self.minus:
+            self.screen = f'-{self.screen}'
+            self.minus = True
+        else:
+            self.screen = self.screen[1:]
+            self.minus = False
+        
         self.ui.screen.setText(self.screen)
 
 if __name__ == "__main__":
