@@ -13,6 +13,24 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow
+{
+	background:url('img/bg.jpg');
+}
+
+QLabel
+{
+	color: rgb(255, 255, 255);
+	font: 20pt &quot;Times New Roman&quot;;
+}
+
+QRadioButton
+{
+	color: rgb(255, 255, 255);
+	font: 14pt &quot;Times New Roman&quot;;
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="question">
     <property name="geometry">
@@ -31,13 +49,13 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>310</y>
+      <y>350</y>
       <width>141</width>
       <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>Новый вопрос</string>
+     <string>ok</string>
     </property>
    </widget>
    <widget class="QRadioButton" name="answer_1">
@@ -71,6 +89,19 @@
      <rect>
       <x>20</x>
       <y>240</y>
+      <width>611</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="answer_4">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>290</y>
       <width>611</width>
       <height>31</height>
      </rect>
